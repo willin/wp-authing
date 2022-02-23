@@ -105,7 +105,7 @@ if( ! class_exists( 'Authing' ) ) {
       Convert the code to a token
       */
 
-      $code = $this->Token ( $_GET['code'] );
+      $token = $this->Token ( $_GET['code'] );
       if ( is_wp_error( $token ) ) {
         die( 'TOKEN ERROR' );
       }
@@ -148,17 +148,14 @@ if( ! class_exists( 'Authing' ) ) {
       $response = wp_safe_remote_post( $url, array(
         'headers' => array(
           'Accept' => 'application/json',
-          'Authorization' => 'Basic ' . $this->auth_secret,
-          'Content-Length' => 0,
           'Content-Type' => 'application/x-www-form-urlencoded'
         ),
-        'body' => http_build_query (
-          [
-            'grant_type' => 'authorization_code',
-            'code' => $code,
-            'redirect_uri' => get_rest_url( null, 'authing/auth' )
-          ]
-          ),
+        'body' => array (
+          'client_id' => $this->client_id,
+          'client_secret' => $this->client_secret,
+          'grant_type' => 'authorization_code',
+          'code' => $code
+        ),
         'sslverify' => false
       ) );
 
@@ -181,7 +178,6 @@ if( ! class_exists( 'Authing' ) ) {
       $response = wp_safe_remote_get ( $url, array(
         'headers' => array (
           'Accept' => 'application/json',
-          'Authorization' => 'Bearer ' . $token,
           'Content-Length' => 0,
           'Content-Type' => 'application/x-www-form-urlencoded'
         ),
@@ -247,7 +243,7 @@ if( ! class_exists( 'Authing' ) ) {
         Check to see if the user already exists
         */
 
-        $username = apply_filters ( 'authing_username', $user_response->preferred_username );
+        $username = apply_filters ( 'authing_username', $user_response->preferred_username ? $user_response->preferred_username : $user_response->name );
         $user_id  = username_exists ( $username );
       }
 
