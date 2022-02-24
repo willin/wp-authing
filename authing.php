@@ -35,6 +35,9 @@ if( ! class_exists( 'Authing' ) ) {
       $this->client_secret = defined( 'AUTHING_CLIENT_SECRET' ) ? AUTHING_CLIENT_SECRET : ( $is_network ? get_site_option( 'authing_client_secret' ) : get_option( 'authing_client_secret' ) );
       $this->auth_secret = base64_encode( $this->client_id . ':' . $this->client_secret );
       $this->base_url = $this->org_url;
+
+      add_action( 'init', array ($this, 'I18n') );
+
       /*
       Redirect URI for Authing authentication loop
       */
@@ -69,6 +72,17 @@ if( ! class_exists( 'Authing' ) ) {
       */
 
       register_deactivation_hook( __FILE__, array( $this, 'Deactivate' ) );
+
+    }
+
+    function I18n () {
+      $domain = 'authing';
+      $locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+
+      // wp-content/languages/plugin-name/plugin-name-de_DE.mo
+      load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '/' . $domain . '_' . $locale . '.mo' );
+      // wp-content/plugins/plugin-name/languages/plugin-name-de_DE.mo
+      load_plugin_textdomain( $domain, FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 
     }
 
@@ -384,18 +398,20 @@ if( ! class_exists( 'Authing' ) ) {
             <?php esc_html_e( 'Step 1', 'authing' ); ?>
           </h2>
           <p>
-            <a href=https://console.authing.cn/login" target="_blank">Log in to or sign up</a> for an Authing account. It's free to create a developer account.
+            <a href=https://console.authing.cn/login" target="_blank">
+              <?php esc_html_e('Log in to or sign up', 'authing' ) ?>
+            </a> <?php esc_html_e('for an Authing account. It\'s free to create a developer account.', 'authing' ) ?>
           </p>
           <h2 class="title">
             <?php esc_html_e( 'Step 2', 'authing' ); ?>
           </h2>
           <p>
-            <?php esc_html_e( 'Go to the Dashboard of your Developer Console. At the top right of the screen, you should see your Org URL (ex: https://dev-123.authing.cn). Copy and paste that URL into the field below.', 'authing' ); ?>
+            <?php esc_html_e( 'Go to the Dashboard of your Developer Console. At the top right of the screen, you should see your App URL (ex: https://dev-123.authing.cn). Copy and paste that URL into the field below.', 'authing' ); ?>
           </p>
           <table class="form-table">
             <tr valign="top">
               <th scope="row">
-                <?php esc_html_e( 'Org URL', 'authing' ); ?>
+                <?php esc_html_e( 'App URL', 'authing' ); ?>
               </th>
               <td>
                 <input type="url" name="authing_org_url" value="<?php echo esc_url( $this->org_url ); ?>" size="40"<?php echo esc_attr( defined( 'AUTHING_ORG_URL' ) ? ' disabled readonly' : '' ); ?>>

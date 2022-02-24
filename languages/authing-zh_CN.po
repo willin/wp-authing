@@ -1,0 +1,117 @@
+# Copyright (C) 2022 Willin Wang
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Authing Authentication 0.0.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-authing\n"
+"POT-Creation-Date: 2022-02-24T08:53:24+00:00\n"
+"PO-Revision-Date: 2022-02-24 16:54+0800\n"
+"Last-Translator: Willin Wang <willin@willin.org>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Domain: authing\n"
+
+#. Plugin Name of the plugin
+#: authing.php:392
+msgid "Authing Authentication"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://developer.wordpress.org/plugins/wp-authing/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Enables Authing integration for WordPress"
+msgstr "启用 WP Authing 集成"
+
+#. Author of the plugin
+msgid "Willin Wang"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://willin.wang/"
+msgstr ""
+
+#: authing.php:319
+msgid "Authing"
+msgstr ""
+
+#: authing.php:339
+msgid "Log In with %s"
+msgstr "%s 登录"
+
+#: authing.php:345
+msgid "or"
+msgstr ""
+
+#: authing.php:398
+msgid "Step 1"
+msgstr "第一步"
+
+#: authing.php:402
+msgid "Log in to or sign up"
+msgstr "登录或注册"
+
+#: authing.php:403
+msgid "for an Authing account. It's free to create a developer account."
+msgstr "Authing 账号。您可以免费创建一个开发者账号。"
+
+#: authing.php:406
+msgid "Step 2"
+msgstr "第二步"
+
+#: authing.php:409
+msgid ""
+"Go to the Dashboard of your Developer Console. At the top right of the "
+"screen, you should see your App URL (ex: https://dev-123.authing.cn). Copy "
+"and paste that URL into the field below."
+msgstr ""
+"前往 Authing 控制台，在应用控制台您可以找到您的应用认证地址（如： https://"
+"dev-123.authing.cn），复制并粘贴到下方。"
+
+#: authing.php:414
+msgid "App URL"
+msgstr "认证地址"
+
+#: authing.php:422
+msgid "Step 3"
+msgstr "第三步"
+
+#: authing.php:425
+msgid ""
+"Go to the Applications section of your Developer Console. Create a new Web "
+"application and enter these URLs when prompted."
+msgstr "在 Authing 控制台中进行认证配置。"
+
+#: authing.php:430
+msgid "Base URI"
+msgstr "默认地址（无须填写）"
+
+#: authing.php:440
+msgid "Login Redirect URI"
+msgstr "登录回调 URL"
+
+#: authing.php:450
+msgid "Step 4"
+msgstr "第四步"
+
+#: authing.php:453
+msgid ""
+"Once you've created the application, go to the General tab and scroll down "
+"to the Client Credentials section. Copy and paste those values in the fields "
+"below."
+msgstr ""
+"创建了自建应用之后，您可以获得 App ID 和 App Secret，复制粘贴到下面的字段里。"
+
+#: authing.php:458
+msgid "App ID"
+msgstr ""
+
+#: authing.php:466
+msgid "App Secret"
+msgstr ""
