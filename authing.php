@@ -2,9 +2,9 @@
 
 /*
 Plugin Name: Authing Authentication
-Plugin URI: https://developer.wordpress.org/plugins/authing-authentication/
+Plugin URI: https://developer.wordpress.org/plugins/wp-authing/
 Description: Enables Authing integration for WordPress
-Version: 0.0.1
+Version: 0.0.2
 Author: Willin Wang
 Author URI: https://willin.wang/
 License: GPL2
