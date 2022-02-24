@@ -259,6 +259,8 @@ if( ! class_exists( 'Authing' ) ) {
           'user_login' => $username,
           'user_pass'  => wp_generate_password(),
           'role'       => $default_role,
+          'nickname'   => $user_response->nickname ? $user_response->nickname : $user_response->name,
+          'email'      => $user_response->email ? $user_response->email : ''
         ), $user_response );
         $user_id   = wp_insert_user ( $user_data );
         if ( is_wp_error( $user_id ) ){
