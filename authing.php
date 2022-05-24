@@ -256,8 +256,18 @@ if( ! class_exists( 'Authing' ) ) {
         /*
         Check to see if the user already exists
         */
-
-        $username = apply_filters ( 'authing_username', $user_response->preferred_username ? $user_response->preferred_username : $user_response->name );
+        if( $user_response->preferred_username ){
+            $temp_name = $user_response->preferred_username;
+        } elseif ( $user_response->username ){
+            $temp_name = $user_response->username;
+        } elseif ( $user_response->name ){
+            $temp_name = $user_response->name;
+        } elseif ( $user_response->phone_number ){
+            $temp_name = "u" . $user_response->phone_number;
+        } else {
+            $temp_name = substr( $user_response->email, 0, strrpos( $user_response->email, "@" ) );
+        }
+        $username = apply_filters ( 'authing_username', $temp_name );
         $user_id  = username_exists ( $username );
       }
 
